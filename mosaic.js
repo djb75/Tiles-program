@@ -54,6 +54,7 @@ function createMosaic(matrix, image1, image2) {
 function updateMosaic() {
     const matrix = readMatrixFromEditor();
     createMosaic(matrix, image1, image2);
+    document.getElementById('mosaic').style.opacity = 1; // Ensure the mosaic is visible
 }
 
 // Function to randomize the matrix
@@ -64,6 +65,18 @@ function randomizeMatrix() {
             document.getElementById(`cell-${i}-${j}`).value = randomValue;
         }
     }
+    revealMosaic();
+}
+
+// Function to reveal the mosaic with an animation
+function revealMosaic() {
+    const mosaicContainer = document.getElementById('mosaic');
+    mosaicContainer.style.opacity = 0; // Hide the mosaic initially
+    setTimeout(() => {
+        const matrix = readMatrixFromEditor();
+        createMosaic(matrix, image1, image2);
+        mosaicContainer.style.opacity = 1; // Fade in the mosaic
+    }, 500); // Delay to simulate the randomize process
 }
 
 // Initialize the matrix editor on page load
