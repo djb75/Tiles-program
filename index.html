@@ -5,24 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mosaic Image Editor</title>
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f5;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 2px;
+        }
+
+        .matrix-input {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .matrix-input:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+        }
+
         #mosaic {
             display: grid;
-            grid-template-columns: repeat(11, 50px); /* Adjust based on your matrix */
-            grid-template-rows: repeat(14, 50px); /* Adjust based on your matrix */
+            grid-template-columns: repeat(11, 50px);
+            grid-template-rows: repeat(14, 50px);
             margin-top: 20px;
+            gap: 2px;
         }
+
         .cell {
             width: 50px;
             height: 50px;
             background-size: cover;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
-        .matrix-input {
-            width: 30px;
-            text-align: center;
+
+        .cell:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .custom-cursor {
+            cursor: url('custom-cursor.png'), auto;
         }
     </style>
 </head>
-<body>
+<body class="custom-cursor">
     <h1>Mosaic Image Editor</h1>
     <table id="matrix-editor">
         <!-- Table rows and cells will be dynamically generated -->
